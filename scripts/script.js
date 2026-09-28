@@ -19,6 +19,26 @@ let modalAlimentacao = document.querySelector('#alimentacao');
 let modalDistribuicao = document.querySelector('#distribuicao');
 let modalCuriosidade = document.querySelector('#curiosidade');
 let modalImage = document.querySelector('#modal-image');
+const mobileNavClose = document.querySelectorAll('.nav-menu a'); // Guardar os itens ancora da side-bar
+
+// Navbar
+hamburguer.addEventListener('click', function() {
+    navMenu.classList.toggle('aberto');
+    if (navMenu.classList.contains('aberto')) {
+        hamburguer.setAttribute('aria-expanded', 'true')
+    } else hamburguer.setAttribute('aria-expanded', 'false')
+});
+
+mobileNavClose.forEach((item) => {
+    item.addEventListener('click', () => {
+        navMenu.classList.remove('aberto')
+        hamburguer.setAttribute('aria-expanded', 'false')
+    });
+});
+
+
+
+
 
 let especies = {
   azul: {
@@ -173,9 +193,6 @@ modalClose.addEventListener('click', function() {
     modal.style.display = 'none';
 });
 
-hamburguer.addEventListener('click', function() {
-    navMenu.classList.toggle('aberto');
-});
 
 btnExplore.addEventListener('click', function() {
     for (let i = 0; i < 8; i++) {
