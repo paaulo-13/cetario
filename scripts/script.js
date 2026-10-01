@@ -1,5 +1,10 @@
-let hamburguer = document.querySelector('.hamburguer');
-let navMenu = document.querySelector('.nav-menu');
+// =======================NAVBAR=======================
+const hamburguer = document.querySelector('.hamburguer');
+const mobileNavClose = document.querySelectorAll('.nav-menu a');
+const navMenu = document.querySelector('.nav-menu');
+// =======================NAVBAR FIM====================
+
+
 let btnPrev = document.querySelector('#prev');
 let btnNext = document.querySelector('#next');
 let btnExplore = document.querySelector('.explore');
@@ -19,7 +24,6 @@ let modalAlimentacao = document.querySelector('#alimentacao');
 let modalDistribuicao = document.querySelector('#distribuicao');
 let modalCuriosidade = document.querySelector('#curiosidade');
 let modalImage = document.querySelector('#modal-image');
-const mobileNavClose = document.querySelectorAll('.nav-menu a'); // Guardar os itens ancora da side-bar
 
 // Navbar
 hamburguer.addEventListener('click', function() {
@@ -194,34 +198,46 @@ modalClose.addEventListener('click', function() {
 });
 
 
-btnExplore.addEventListener('click', function() {
+btnExplore.addEventListener('click', function(event) {
+    // 1. Evita o comportamento padrão caso fosse um link <a> (pular instantaneamente)
+    event.preventDefault(); 
+    
+    // 2. Preparamos uma "caixa invisível" (Fragmento) para não travar a tela
+    let fragmento = document.createDocumentFragment();
+
     for (let i = 0; i < 8; i++) {
         let gota = document.createElement('div');
+        gota.classList.add('gota-animada'); // Puxa todo o estilo estático do CSS
+        
         let tamanho = Math.random() * 22 + 8;
         let x = (Math.random() - 0.5) * 200;
         let y = (Math.random() - 0.5) * 200;
-        gota.style.cssText = `
-            position: fixed;
-            width: ${tamanho}px;
-            height: ${tamanho}px;
-            border-radius: 50%;
-            background-color: var(--ocean-light);
-            top: calc(50% + ${y}px);
-            left: calc(50% + ${x}px);
-            opacity: 0.8;
-            pointer-events: none;
-            animation: splash ${0.6 + Math.random() * 0.4}s ease-out forwards;
-        `;
-        document.body.appendChild(gota);
-        setTimeout(function() {
-            gota.remove();
-        }, 1200);
+        let duracao = 0.6 + Math.random() * 0.4;
+        
+        // 3. Modificamos SÓ o que é matemático/dinâmico via inline styles
+        gota.style.width = `${tamanho}px`;
+        gota.style.height = `${tamanho}px`;
+        gota.style.top = `calc(50% + ${y}px)`;
+        gota.style.left = `calc(50% + ${x}px)`;
+        gota.style.animation = `splash ${duracao}s ease-out forwards`;
+        
+        fragmento.appendChild(gota); // Coloca na caixa invisível
+        
+        // Limpeza (Lixo de memória)
+        setTimeout(() => gota.remove(), 1200);
     }
+    
+    document.body.appendChild(fragmento); // Injeta na tela apenas 1 VEZ SÓ!
     splash.classList.add('ativo');
-    setTimeout(function() {
+    
+    setTimeout(() => {
         splash.classList.remove('ativo');
     }, 1600);
-    document.querySelector('#species').scrollIntoView({ behavior: 'smooth' });
+
+    // 4. Correção da UX: Espera 400ms para o usuário ver a explosão, e DEPOIS rola a página
+    setTimeout(() => {
+        document.querySelector('#species').scrollIntoView({ behavior: 'smooth' });
+    }, 400);
 });
 
 // recalcula posição se a janela for redimensionada
