@@ -54,47 +54,54 @@
     </section>
     <!-- Fim Hero-->
 
-    <section id="species">
-        <button id="prev">&#10094;</button>
-        <div id="carousel">
-            <article data-species="azul">
-                <img src="assets/images/azul.png" alt="imagem de uma baleia azul sem fundo">
-                <h3>Azul</h3>
-                <small>Balaenoptera musculus</small>
+    <!-- Espécies (Carrossel) -->
+    <section id="species" class="species" aria-labelledby="species-title">
+        <!-- Título invisível para leitores de tela manterem a semântica da documentação -->
+        <h2 id="species-title" style="display: none;">Espécies de Cetáceos</h2>
+        
+        <button id="prev" class="carousel__btn carousel__btn--prev" aria-label="Espécie Anterior">&#10094;</button>
+        
+        <div id="carousel" class="carousel">
+            <article class="carousel__item" data-species="azul">
+                <img src="assets/images/azul.png" alt="Ilustração da Baleia Azul">
+                <h3 class="carousel__title">Azul</h3>
+                <small class="carousel__scientific">Balaenoptera musculus</small>
             </article>
-            <article data-species="jubarte">
-                <img src="assets/images/jubarte.png" alt="imagem de uma jubarte sem fundo">
-                <h3>Jubarte</h3>
-                <small>Megaptera novaengliae</small>
+            <article class="carousel__item" data-species="jubarte">
+                <img src="assets/images/jubarte.png" alt="Ilustração da Baleia Jubarte">
+                <h3 class="carousel__title">Jubarte</h3>
+                <small class="carousel__scientific">Megaptera novaengliae</small>
             </article>
-            <article data-species="franca">
-                <img src="assets/images/franca.png" alt="imagem de uma baleia franca sem fundo">
-                <h3>Franca do Pacífico</h3>
-                <small>Eubalaena japonica</small>
+            <article class="carousel__item" data-species="franca">
+                <img src="assets/images/franca.png" alt="Ilustração da Baleia Franca do Pacífico">
+                <h3 class="carousel__title">Franca do Pacífico</h3>
+                <small class="carousel__scientific">Eubalaena japonica</small>
             </article>
-            <article data-species="garrafa">
-                <img src="assets/images/garrafa.png" alt="imagem de um golfinho nariz de garrafa sem fundo">
-                <h3>Nariz de Garrafa</h3>
-                <small>Tursiops truncatus</small>
+            <article class="carousel__item" data-species="garrafa">
+                <img src="assets/images/garrafa.png" alt="Ilustração do Golfinho Nariz de Garrafa">
+                <h3 class="carousel__title">Nariz de Garrafa</h3>
+                <small class="carousel__scientific">Tursiops truncatus</small>
             </article>
-            <article data-species="orca">
-                <img src="assets/images/orca.png" alt="imagem de uma orca sem fundo">
-                <h3>Orca</h3>
-                <small>Orcinus orca</small>
+            <article class="carousel__item" data-species="orca">
+                <img src="assets/images/orca.png" alt="Ilustração da Orca">
+                <h3 class="carousel__title">Orca</h3>
+                <small class="carousel__scientific">Orcinus orca</small>
             </article>
-            <article data-species="cachalote">
-                <img src="assets/images/cachalote.png" alt="imagem de uma cachalote sem fundo">
-                <h3>Cachalote</h3>
-                <small>Physeter macrocephalus</small>
+            <article class="carousel__item" data-species="cachalote">
+                <img src="assets/images/cachalote.png" alt="Ilustração do Cachalote">
+                <h3 class="carousel__title">Cachalote</h3>
+                <small class="carousel__scientific">Physeter macrocephalus</small>
             </article>
-            <article data-species="beluga">
-                <img src="assets/images/beluga.png" alt="imagem de uma beluga sem fundo">
-                <h3>Beluga</h3>
-                <small>Delphinapterus leucas</small>
+            <article class="carousel__item" data-species="beluga">
+                <img src="assets/images/beluga.png" alt="Ilustração da Beluga">
+                <h3 class="carousel__title">Beluga</h3>
+                <small class="carousel__scientific">Delphinapterus leucas</small>
             </article>
         </div>
-        <button id="next">&#10095;</button>
+        
+        <button id="next" class="carousel__btn carousel__btn--next" aria-label="Próxima Espécie">&#10095;</button>
     </section>
+    <!-- Fim Espécies -->
 
     <section id="about">
         <h2>Sobre o site</h2>

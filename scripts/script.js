@@ -13,7 +13,7 @@ let carousel = document.querySelector('#carousel');
 let modal = document.querySelector('#modal');
 let indiceAtual = 0;
 let modalClose = document.querySelector('#modal-close');
-let articles = document.querySelectorAll('#carousel article');
+let articles = document.querySelectorAll('.carousel__item');
 let modalNome = document.querySelector('#modal-card h3');
 let modalCientifico = document.querySelector('#cientifico');
 let modalGrupo = document.querySelector('#grupo');
@@ -145,9 +145,25 @@ function calcularOffset(indice) {
     }
 }
 
+// Atualiza a UX visual das setas de navegação
+function atualizarBotoes() {
+    if (indiceAtual === 0) {
+        btnPrev.classList.add('disabled');
+    } else {
+        btnPrev.classList.remove('disabled');
+    }
+    
+    if (indiceAtual === articles.length - 1) {
+        btnNext.classList.add('disabled');
+    } else {
+        btnNext.classList.remove('disabled');
+    }
+}
+
 // aplica o transform no carrossel
 function moverCarrossel(indice) {
     carousel.style.transform = 'translateX(' + calcularOffset(indice) + 'vw)';
+    atualizarBotoes();
 }
 
 articles[0].classList.add('destaque');
@@ -165,6 +181,7 @@ articles.forEach(function(article, index) {
         modalCuriosidade.textContent = especies[article.dataset.species].curiosidade;
         modalImage.src = 'assets/images/' + article.dataset.species + '.png';
         modalImage.style.transform = isMobile() ? 'translateX(-50%)' : especies[article.dataset.species].transform;
+        
         articles[indiceAtual].classList.remove('destaque');
         indiceAtual = index;
         articles[indiceAtual].classList.add('destaque');
@@ -173,7 +190,7 @@ articles.forEach(function(article, index) {
     });
 });
 
-moverCarrossel(0);
+moverCarrossel(0); // Inicializa a posição e os botões
 
 btnNext.addEventListener('click', function() {
     if (indiceAtual < articles.length - 1) {
