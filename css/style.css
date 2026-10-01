@@ -407,68 +407,98 @@ a {
 .ativo .onda:nth-child(2) { animation: splash 1s ease-out 0.3s forwards; }
 .ativo .onda:nth-child(3) { animation: splash 1s ease-out 0.6s forwards; }
 
-#about {
+/* =========================================
+   11. SOBRE
+========================================= */
+.about {
   max-width: 700px;
   margin: 0 auto;
   padding: 100px 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-#about p {
-  font-size: 16px;
+.about__text {
+  font-size: 1rem;
   line-height: 1.8;
-  opacity: 0.8;
-  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.85); /* Melhor acessibilidade que usar opacity puro */
 }
 
-footer {
+/* =========================================
+   12. FOOTER
+========================================= */
+.footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
+  gap: 30px; /* Substitui margens e centraliza os blocos melhor */
 }
 
-footer i {
+.footer__profile-img {
+  display: block;
+  height: 300px;
+  border-radius: 100px;
+  object-fit: cover; /* Evita distorções na foto */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Charme profissional */
+}
+
+.footer__info {
+  text-align: center;
   color: var(--white);
-  font-size: 32px;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-footer h4 {
+.footer__name {
   font-size: 32px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif; /* Sobrescreve Roboto herdado */
   font-weight: 700;
-  text-align: center;
 }
 
-footer p {
-  color: var(--white);
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  text-align: center;
+.footer__bio {
+  font-size: 1rem;
+  max-width: 500px; /* Impede a bio de esticar demais no PC */
+  color: rgba(255, 255, 255, 0.85);
 }
 
-footer a {
+.footer__contact {
+  font-style: normal; /* Address é itálico por padrão */
+}
+
+.footer__link {
+  color: var(--ocean-light); /* Maior contraste no link de email */
   text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.footer__link:hover {
   color: var(--white);
+  text-decoration: underline;
 }
 
-footer address {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  text-align: center;
-}
-
-footer ul {
+.footer__social-list {
   display: flex;
   list-style-type: none;
   gap: 25px;
 }
 
-.paulo {
-  display: block;
-  height: 300px;
-  border-radius: 100px;
+.footer__social-link {
+  color: var(--white);
+  font-size: 32px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+
+.footer__social-link:hover {
+  color: var(--ocean-light);
+  transform: translateY(-5px); /* Efeito flutuante de hover */
 }
 
 #modal {
