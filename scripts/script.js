@@ -1,5 +1,10 @@
-let hamburguer = document.querySelector('.hamburguer');
-let navMenu = document.querySelector('.nav-menu');
+// =======================NAVBAR=======================
+const hamburguer = document.querySelector('.hamburguer');
+const mobileNavClose = document.querySelectorAll('.nav-menu a');
+const navMenu = document.querySelector('.nav-menu');
+// =======================NAVBAR FIM====================
+
+
 let btnPrev = document.querySelector('#prev');
 let btnNext = document.querySelector('#next');
 let btnExplore = document.querySelector('.explore');
@@ -19,7 +24,6 @@ let modalAlimentacao = document.querySelector('#alimentacao');
 let modalDistribuicao = document.querySelector('#distribuicao');
 let modalCuriosidade = document.querySelector('#curiosidade');
 let modalImage = document.querySelector('#modal-image');
-const mobileNavClose = document.querySelectorAll('.nav-menu a'); // Guardar os itens ancora da side-bar
 
 // Navbar
 hamburguer.addEventListener('click', function() {
